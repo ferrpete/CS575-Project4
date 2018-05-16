@@ -337,15 +337,12 @@ void GLADoS( )
 			
 			//printf( "Decision: %8.2lf \n", Decision );
 			
-			int K = 10;
+			int K = 1000;
 			
 			if( Decision > 0 )
 			{
-				if( GRAIN_THRESHOLD - NowHeight > 0 )
-					NowNumDeer -= (int) K * ( GRAIN_THRESHOLD - NowHeight ) * ONE_DEER_EATS_PER_MONTH;
-				else
-					NowNumDeer -= 5;
-				NowNeurotoxin = 1;
+				NowNeurotoxin = (int) K * abs( GRAIN_THRESHOLD - NowHeight ) * ONE_DEER_EATS_PER_MONTH;
+				NowNumDeer -= NowNeurotoxin;
 			}
 			else
 			{
